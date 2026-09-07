@@ -4,6 +4,8 @@ import java.util.*;
 
 public class UnionArray {
 
+    //Time complexity: O(n+m) where n and m are the sizes of the two arrays
+    //Space complexity: O(n+m) where n and m are the sizes of the two
     public static List < Integer > FindUnion(int[] arr1, int[] arr2) {
         int i = 0, j = 0;
 
