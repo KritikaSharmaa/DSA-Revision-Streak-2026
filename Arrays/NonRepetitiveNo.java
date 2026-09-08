@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class NonRepetitiveNo {
     // Time Complexity O(N) + O(N/2+1) ~ O(N)
-    public static Long nonRep(int[] arr) {
+    public static Long nonRep_better(int[] arr) {
         // better approach
         Map<Long, Integer> map = new HashMap<>();
 
@@ -19,12 +19,22 @@ public class NonRepetitiveNo {
         }
 
         return 0L;
+    }
 
+    public static Long nonRep_optimal(int[] arr){
+        // optimal approach
+        long xor = 0;
+        for (long num : arr) {
+            xor ^= num; // XOR operation as a^a = 0 and a^0 = a, so all repetitive numbers will cancel out and we will be left with the non-repetitive number
+        }
+        return xor;
     }
 
     public static void main(String[] args) throws java.lang.Exception {
         int[] arr = { 4, 1, 2, 1, 2, 4, 7 };
-        Long res = nonRep(arr);
-        System.out.println("non repetitive number is: " + res);
+        Long res = nonRep_better(arr);
+        System.out.println("non repetitive number is[Better Approach]: " + res);
+        Long reso = nonRep_optimal(arr);
+        System.out.println("non repetitive number is[Optimal Approach]: " + reso);
     }
 }
